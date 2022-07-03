@@ -19,4 +19,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('stocks.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
+
+# Configure Admin Titles
+admin.site.site_header = "Trading App"
+admin.site.site_title = "Trading App"
+admin.site.index_title = "Git Gud and trade on"
