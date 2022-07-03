@@ -1,0 +1,32 @@
+{% extends 'stocks/base/base.html' %}
+
+{% block content %}
+
+<div class="push-down container mt-5 change-box-size">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="email">Username</label>
+              <input type="text" class="form-control" name="username" />
+            </div>
+            <div class="form-group space-top">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" />
+            </div>
+            <button type="submit" class="btn btn-dark button-LRF">Login</button>
+            <a href="{% url 'sign_up' %}" class="btn btn-secondary button-LRF">
+              Register
+            </a>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
