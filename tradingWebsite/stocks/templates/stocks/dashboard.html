@@ -1,0 +1,131 @@
+{% extends 'stocks/base/base.html' %}
+
+{% block content %}
+{% load mathfilters %}
+
+
+<div class="card center" style="width: 50rem">
+  <div class="card-body">
+    <h1>Hello {{request.user}}</h1>
+    <h2>Your portfolio is worth ${{ portfolio_worth|floatformat:2 }}</h2>
+    <h2>You have ${{ money_left|floatformat:2 }}</h2>
+
+    <div class="push-down-sm">
+      <a class="btn btn-dark" href="{% url 'logout' %}" role="button">log out</a>
+    </div>
+    <div class="push-down-sm">
+      <a class="btn btn-danger" href="{% url 'delete_user' %}" role="button">delete user</a>
+    </div>
+    <form action="{% url 'buy' %}" class="push-down-sm" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <div class="input-group">
+          <button
+            onclick="DisableButton(0)"
+            class="btn btn-outline-success"
+            type="submit"
+            id="buy-button"
+          >
+            Buy
+          </button>
+          <input
+            required
+            type="text"
+            class="form-control"
+            placeholder="Name of the stock"
+            name="name"
+          />
+          <input
+            required
+            type="number"
+            min="1"
+            class="form-control"
+            placeholder="Number of shares"
+            name="shares"
+          />
+        </div>
+      </div>
+    </form>
+    <form action="{% url 'sell' %}" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <div class="input-group">
+          <button
+            onclick="DisableButton(1)"
+            class="btn btn-outline-danger"
+            type="submit"
+            id="sell-button"
+          >
+            Sell
+          </button>
+          <input
+            required
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            placeholder="Name of the stock"
+            name="name"
+          />
+          <input
+            required
+            type="number"
+            min="1"
+            aria-label="Last name"
+            class="form-control"
+            placeholder="Number of shares"
+            name="shares"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card center push-down-sm" style="width: 80rem">
+  <div class="card-body">
+    <table class="table table-striped">
+      <tr class="table-dark">
+        <th>Stock Name</th>
+        <th>Number of stocks you have</th>
+        <th>Stock Price</th>
+        <th>Worth of your stocks</th>
+      </tr>
+
+      <!-- logic to display stocks. -->
+
+      {% for stock, price in stocks_and_prices %}
+
+      <tr class="table-dark">
+        <th>{{stock.name}}</th>
+        <th>{{stock.shares}}</th>
+        <th>{{price}}</th>
+        <th>{{stock.shares|mul:price|floatformat:2}}</th>
+      </tr>
+
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<script>
+  function DisableButton(formNum) {
+    const elements = document.forms[formNum].elements;
+
+    var cansubmit= true;
+
+    for(var i = 0; i < elements.length; i++){
+        console.log(elements[i].value.length)
+        if(elements[i].value.length == 0 && elements[i].type != "submit"){
+            cansubmit = false;
+        }
+    }
+ 
+    if(cansubmit){
+      document.forms[formNum].submit()
+      document.getElementById("buy-button").disabled = true;
+      document.getElementById("sell-button").disabled = true;
+    }
+  }
+</script>
+
+{% endblock %}

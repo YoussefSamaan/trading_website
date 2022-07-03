@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>What's up</h1>
-  </body>
-</html>
+{% extends 'stocks/base/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-box">
+  <div></div>
+  <div>
+    <h1>Practice traiding stocks</h1>
+    <p class="p-home">This website lets you practice traiding.</p>
+    <p class="p-home">
+      You can try out your own traiding strategies without any risk.
+    </p>
+    <a class="btn btn-dark" href="{% url 'login' %}" role="button">Login</a>
+    <a class="btn btn-light" href="{% url 'sign_up' %}" role="button">Register</a>
+  </div>
+
+  <div class="home-img">
+    <img src="{% static 'stocks/img/Stonks.jpg' %}" alt="traiding image" />
+  </div>
+  <div></div>
+</div>
+{% endblock %}
