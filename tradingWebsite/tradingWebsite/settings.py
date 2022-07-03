@@ -29,9 +29,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", cast=bool)
 
 
-ALLOWED_HOSTS = [
-    'http://localhost:8000/'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
