@@ -1,0 +1,62 @@
+body {
+  background-color: #e8ecef;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-LRF {
+  margin-top: 10px;
+}
+
+.space-top {
+  margin-top: 5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.p-home {
+  font-size: larger;
+}
+
+.change-box-size {
+  max-width: 1100px;
+}
+
+.home-box {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15%;
+}
+
+.home-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.push-down {
+  margin-top: 11%;
+}
+
+.push-down-a-bit {
+  margin-top: 5%;
+}
+
+.inside-container {
+  max-width: 9%;
+}
+
+.go-up {
+  position: relative;
+  margin-top: -100px;
+}
+
+.push-down-sm {
+  margin-top: 3%;
+}
