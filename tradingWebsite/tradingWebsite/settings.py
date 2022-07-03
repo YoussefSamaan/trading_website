@@ -135,7 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    "C:\\Users\\youss\\OneDrive\\Desktop\\projects\\tradingWebsiteDjango\\tradingWebsite\\stocks\\static"
+    os.path.join(BASE_DIR.parent, "\\stocks\\static")
 ]
 
 # Default primary key field type
