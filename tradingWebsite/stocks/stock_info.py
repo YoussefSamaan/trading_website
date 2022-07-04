@@ -1,7 +1,7 @@
 import finnhub
 from decouple import config
 
-finnhub_client = finnhub.Client(api_key=config("API_KEY_SANDBOX"))
+finnhub_client = finnhub.Client(api_key=config("API_KEY"))
 
 
 def get_stock_price_info(stock):
