@@ -32,8 +32,9 @@ DEBUG = config("DEBUG", cast=bool)
 
 
 ALLOWED_HOSTS = [
-    'trading-practice.herokuapp.com',
-    '127.0.0.1'
+    #'trading-practice.herokuapp.com',
+    #'127.0.0.1',
+    "*"
 ]
 
 
